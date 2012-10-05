@@ -8,3 +8,29 @@ Designed to be used with [heroku-buildpack-compose](https://github.com/bwhmather
 
 Usage
 -----
+
+This buildpack currently depends on the [user env compile](https://devcenter.heroku.com/articles/labs-user-env-compile) labs addon to be able to access the ssh key.  To enable run:
+
+    heroku labs:enable user-env-compile
+
+Set `SSH_KEY` variable to private key:
+
+    heroku config:set SSH_KEY=`cat /path/to/id_rsa`
+
+The key must not require a password to use.
+
+Enable the compose buildpack
+
+    heroku config:set BUILDPACK_URL=https://github.com/bwhmather/heroku-buildpack-compose.git
+
+Create `.buildpacks` file:
+    
+    https://github.com/bwhmather/heroku-buildpack-ssh.git
+    ssh://git@github.com:bwhmather/top-secret-project.git
+    https://github.com/heroku/heroku-buildpack-something-something.git
+
+Placing line for this buildpack before that of buildpacks requiring access to private repositories.
+
+
+
+
