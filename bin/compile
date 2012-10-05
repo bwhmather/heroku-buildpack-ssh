@@ -20,4 +20,4 @@
 cd ~
 mkdir -p .ssh/
 echo $SSH_KEY > .ssh/id_rsa
-echo 'StrictHostChecking=no' > .ssh/config
+echo 'StrictHostKeyChecking=no' > .ssh/config
