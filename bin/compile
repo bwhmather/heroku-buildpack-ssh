@@ -19,7 +19,7 @@
 
 cd ~
 mkdir -p .ssh/
-echo $SSH_KEY > .ssh/id_rsa
+echo "$SSH_KEY" > .ssh/id_rsa
 echo 'StrictHostKeyChecking=no' > .ssh/config
 
 chmod 700 .ssh
