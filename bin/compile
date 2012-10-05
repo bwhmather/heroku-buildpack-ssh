@@ -21,3 +21,7 @@ cd ~
 mkdir -p .ssh/
 echo $SSH_KEY > .ssh/id_rsa
 echo 'StrictHostKeyChecking=no' > .ssh/config
+
+chmod 700 .ssh
+chmod 400 .ssh/id_rsa
+chmod 600 .ssh/config
