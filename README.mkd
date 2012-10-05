@@ -1,0 +1,10 @@
+
+Heroku buildpack: SSH
+=====================
+
+Reads and sets ssh private key from an environment variable.
+Designed to be used with [heroku-buildpack-compose](https://github.com/bwhmather/heroku-buildpack-compose) to allow build process to access private resources without storing unencrypted keys in the repository.
+
+
+Usage
+-----
