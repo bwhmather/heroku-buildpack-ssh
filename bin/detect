@@ -17,7 +17,7 @@
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 # -----------------------------------------------------------------------------
 
-if [ -z "$SSH_KEY"]; then
+if [ -z "$SSH_KEY" ]; then
     echo 'no';
     exit 1;
 else    
