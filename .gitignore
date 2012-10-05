@@ -1,0 +1,10 @@
+# junk os files
+.DS_Store
+__MAC_OSX/
+thumbs.db
+desktop.ini
+
+# editor swap files
+~*
+*~
+.*.sw[op]
