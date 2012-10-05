@@ -17,11 +17,11 @@
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 # -----------------------------------------------------------------------------
 
-cd ~
-mkdir -p .ssh/
-echo "$SSH_KEY" > .ssh/id_rsa
-echo 'StrictHostKeyChecking=no' > .ssh/config
+mkdir -p ~/.ssh/
+chmod 700 ~/.ssh/
 
-chmod 700 .ssh
-chmod 400 .ssh/id_rsa
-chmod 600 .ssh/config
+echo "$SSH_KEY" > ~/.ssh/id_rsa
+chmod 400 ~/.ssh/id_rsa
+
+echo 'StrictHostKeyChecking=no' > ~/.ssh/config
+chmod 600 ~/.ssh/config
