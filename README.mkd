@@ -2,8 +2,7 @@
 Heroku buildpack: SSH
 =====================
 
-Reads and sets ssh private key from an environment variable.
-Designed to be used with [heroku-buildpack-compose](https://github.com/bwhmather/heroku-buildpack-compose) to allow build process to access private resources without storing unencrypted keys in the repository.
+Reads and sets ssh private key from an environment variable.  Designed to be used with [heroku-buildpack-compose](https://github.com/bwhmather/heroku-buildpack-compose) to allow build process to access private resources without storing unencrypted keys in the repository.
 
 
 Usage
@@ -24,13 +23,20 @@ Enable the compose buildpack
     heroku config:set BUILDPACK_URL=https://github.com/bwhmather/heroku-buildpack-compose.git
 
 Create `.buildpacks` file:
-    
-    https://github.com/bwhmather/heroku-buildpack-ssh.git
-    ssh://git@github.com:bwhmather/top-secret-project.git
+
+    https://github.com/${YOUR_NAME}/heroku-buildpack-ssh.git
+    ssh://git@github.com:${YOUR_NAME}/top-secret-buildpack.git
     https://github.com/heroku/heroku-buildpack-something-something.git
 
-Placing line for this buildpack before that of buildpacks requiring access to private repositories.
+This buildpack should obviously be loaded before buildpacks requiring access to private repositories.
 
+It is highly recommended that you use your own fork as updates may break backwards compatibility.
 
+Bugs
+----
+
+Please report any bugs to using the [issue tracker](https://github.com/bwhmather/heroku-buildpack-ssh/issues).
+
+Pull requests are welcome.
 
 
