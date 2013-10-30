@@ -14,7 +14,7 @@ This buildpack currently depends on the [user env compile](https://devcenter.her
 
 Set `SSH_KEY` variable to private key:
 
-    heroku config:set SSH_KEY=`cat /path/to/id_rsa`
+    heroku config:set SSH_KEY="`cat /path/to/id_rsa`"
 
 The key must not require a password to use.
 
