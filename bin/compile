@@ -25,3 +25,9 @@ chmod 400 ~/.ssh/id_rsa
 
 echo 'StrictHostKeyChecking=no' > ~/.ssh/config
 chmod 600 ~/.ssh/config
+
+mkdir -p "$1/.profile.d"
+cat > "$1/.profile.d/00-clobber-ssh-key" << EOF
+echo 'unsetting ssh deploy key'
+unset -v SSH_KEY'
+EOF
