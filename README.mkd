@@ -16,7 +16,7 @@ Set `SSH_KEY` variable to private key:
 
     heroku config:set SSH_KEY="`cat /path/to/id_rsa`"
 
-The key must not require a password to use.
+The key must not require a password to use.  Before your application is run the `SSH_KEY` so that it is not accessible if an instance is compromised.
 
 Enable the compose buildpack
 
