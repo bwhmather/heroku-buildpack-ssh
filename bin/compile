@@ -35,5 +35,7 @@ chmod 700 ~/.ssh/
 mv "$ENV_DIR/SSH_KEY" ~/.ssh/id_rsa
 chmod 400 ~/.ssh/id_rsa
 
+# If StrictHostChecking is not disabled ssh will bring up an interactive prompt
+# when trying to connect to a host for the first time and block installation
 echo 'StrictHostKeyChecking=no' > ~/.ssh/config
 chmod 600 ~/.ssh/config
