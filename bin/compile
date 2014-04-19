@@ -35,7 +35,13 @@ chmod 700 ~/.ssh/
 mv "$ENV_DIR/SSH_KEY" ~/.ssh/id_rsa
 chmod 400 ~/.ssh/id_rsa
 
-# If StrictHostChecking is not disabled ssh will bring up an interactive prompt
-# when trying to connect to a host for the first time and block installation
-echo 'StrictHostKeyChecking=no' > ~/.ssh/config
-chmod 600 ~/.ssh/config
+if [ -f "$ENV_DIR/KNOWN_HOSTS" ]; then
+    mv "$ENV_DIR/KNOWN_HOSTS" .ssh/known_hosts
+    chmod 600 ~/.ssh/known_hosts
+else
+    echo 'WARNING: no known hosts supplied.  disabling strict host checking';
+    # If StrictHostChecking is not disabled ssh will bring up an interactive prompt
+    # when trying to connect to a host for the first time and block installation
+    echo 'StrictHostKeyChecking=no' > ~/.ssh/config
+    chmod 600 ~/.ssh/config
+fi
