@@ -17,17 +17,23 @@
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 # -----------------------------------------------------------------------------
 
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+if [ -f "$ENV_DIR/SSH_KEY" ]; then
+    echo 'No SSH key found';
+    exit 1;
+fi
+
 mkdir -p ~/.ssh/
 chmod 700 ~/.ssh/
 
-echo "$SSH_KEY" > ~/.ssh/id_rsa
+# Install the ssh key
+# Use mv instead of cp as, for security, we don't want the application to have
+# access to the deploy key at runtime
+mv "$ENV_DIR/SSH_KEY" ~/.ssh/id_rsa
 chmod 400 ~/.ssh/id_rsa
 
 echo 'StrictHostKeyChecking=no' > ~/.ssh/config
 chmod 600 ~/.ssh/config
-
-mkdir -p "$1/.profile.d"
-cat > "$1/.profile.d/00-clobber-ssh-key.sh" << EOF
-echo 'unsetting ssh deploy key'
-unset -v SSH_KEY
-EOF
