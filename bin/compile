@@ -33,7 +33,5 @@ echo 'StrictHostKeyChecking=no' > $SSH_DIR/config
 chmod 600 $SSH_DIR/config
 
 mkdir -p "$BUILD_DIR/.profile.d"
-cat > "$BUILD_DIR/.profile.d/00-clobber-ssh-key.sh" << EOF
-echo 'unsetting ssh deploy key'
-unset -v SSH_KEY
-EOF
+echo "unset -v SSH_KEY" > $BUILD_DIR/.profile.d/unset-ssh-key.sh
+
