@@ -18,7 +18,7 @@
 # -----------------------------------------------------------------------------
 ENV_DIR=$3
 
-if [ -f $ENV_DIR/$KEY ]; then
+if [ -f $ENV_DIR/SSH_KEY ]; then
     echo 'SSH'
     exit 0
 else    
