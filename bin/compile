@@ -17,17 +17,21 @@
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 # -----------------------------------------------------------------------------
 
-mkdir -p ~/.ssh/
-chmod 700 ~/.ssh/
+set -e
+ENV_DIR=$3
+BUILD_DIR=$1
+SSH_DIR=$BUILD_DIR/.ssh
 
-echo "$SSH_KEY" > ~/.ssh/id_rsa
-chmod 400 ~/.ssh/id_rsa
 
-echo 'StrictHostKeyChecking=no' > ~/.ssh/config
-chmod 600 ~/.ssh/config
+mkdir -p $SSH_DIR/
+chmod 700 $SSH_DIR/
 
-mkdir -p "$1/.profile.d"
-cat > "$1/.profile.d/00-clobber-ssh-key.sh" << EOF
-echo 'unsetting ssh deploy key'
-unset -v SSH_KEY
-EOF
+cp $ENV_DIR/SSH_KEY $SSH_DIR/id_rsa
+chmod 400 $SSH_DIR/id_rsa
+
+echo 'StrictHostKeyChecking=no' > $SSH_DIR/config
+chmod 600 $SSH_DIR/config
+
+mkdir -p "$BUILD_DIR/.profile.d"
+echo "unset -v SSH_KEY" > $BUILD_DIR/.profile.d/unset-ssh-key.sh
+
